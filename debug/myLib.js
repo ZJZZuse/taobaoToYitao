@@ -75,6 +75,8 @@
      */
 
     PageActionControllerZ.prototype.doAction = function() {
+      var me;
+      me = this;
       return async.mapLimit(this.pageActions, this.parallelCount, function(ele, callback) {
         return myCommonToolsZ.fireActionByCusCondition(function() {
           return ele.getFireCondition();
@@ -89,10 +91,10 @@
         }, null, ele.delayTime);
       }, function(err, result) {
         if (err) {
-          onError(err);
+          me.onError(err);
           return;
         }
-        return onFinished(result);
+        return me.onFinished(result);
       });
     };
 
