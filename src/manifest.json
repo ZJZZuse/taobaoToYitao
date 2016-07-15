@@ -1,0 +1,51 @@
+{
+  // 必须的字段
+  "name": "淘宝一键一淘",
+  "version": "0.1.0",
+  "manifest_version": 2,
+  // 建议提供的字段
+  //"description": "A plain text description",
+  //"icons": { },
+  //"default_locale": "en",
+  // 多选一，或者都不提供
+  //"browser_action": {},
+  //"page_action": {},
+  //"theme": {},
+  //"app": {},
+  // 根据需要提供
+
+  "background": {
+    "scripts": [
+      "jquery.min.js",
+      "async.js",
+      "myLib.js",
+      "background.js"
+    ]
+  },
+
+  "content_scripts": [
+
+
+    {
+      "matches": [
+        "*://*.taobao.com/item.htm*","*://*.tmall.com/item.htm*"
+      ],
+      "js": [
+        "jquery.min.js",
+        "async.js",
+        "myLib.js",
+        "goodsPageAction.js"
+      ],
+      "run_at":"document_end"
+    }
+  ],
+  //  "key": "publicKey",
+  "permissions": [
+    //    "background",
+        "http://www.etao.com/*",
+    //    "https://*/*"
+    "tabs"
+
+  ],
+  "requirements": {}
+}
